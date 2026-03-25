@@ -1,0 +1,83 @@
+
+<!doctype html>
+<html>
+  <head>
+    <title>Audio Prediction</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f6fa;
+        color: #2f3640;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        color: #2e86de;
+      }
+      form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+      input[type="file"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      input[type="submit"] {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #2e86de;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      input[type="submit"]:hover {
+        background-color: #1b4f72;
+      }
+      .prediction-box {
+        background-color: #dff9fb;
+        padding: 15px 20px;
+        border-radius: 10px;
+        color: #0c2461;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Industrial Machine Audio Prediction</h1>
+    <form method="post" enctype="multipart/form-data">
+      <input type="file" name="audio" accept=".wav" required>
+      <input type="submit" value="Predict">
+    </form>
+
+    {% if label %}
+    <div class="prediction-box">
+      Predicted Label: {{ label }}
+    </div>
+    <img src="data:image/png;base64,{{ img_data }}">
+    {% endif %}
+  </body>
+</html>
